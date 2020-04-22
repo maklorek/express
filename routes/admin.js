@@ -16,7 +16,6 @@ router.all('*', (req, res, next) => {
 /* GET home page. */
 router.get('/', (req, res) => {
     News.find({}, (err, data) => {
-        console.log(data)
 
         res.render('admin/index', { title: 'Admin', data });
     })
@@ -46,6 +45,7 @@ router.post('/news/add', (req, res) => {
 });
 router.get(`/news/delete/:id`, (req, res) => {
     News.findByIdAndDelete(req.params.id, (err) => {
+
         res.redirect('/admin')
     })
 });
